@@ -1,0 +1,1 @@
+This application is meant to be a used by small businesses. It will generate an EPC069-12 QR Code. When scanned with a supported bank app it will open a screen where the customer can quickly transfer the funds instead of having to use card machine. This will save the business a large amount of expenses.
