@@ -4,11 +4,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.zxing.BarcodeFormat;
@@ -61,5 +65,29 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
+    }
+
+    // create the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // menu click handling
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int clickedItem = item.getItemId();
+
+        Log.d(TAG, "onOptionsItemSelected item clicked -> " + clickedItem);
+
+        if (clickedItem == R.id.action_preferences) {
+//            startActivity(new Intent(this, PreferencesActivity.class));
+            Toast.makeText(MainActivity.this, "You clicked the preferences item", Toast.LENGTH_SHORT).show();
+
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
