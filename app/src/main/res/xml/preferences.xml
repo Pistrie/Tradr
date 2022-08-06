@@ -7,11 +7,6 @@
         android:singleLine="true"
         android:title="@string/account_owner" />
     <EditTextPreference
-        android:key="bic_code"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/bank_bic_code" />
-    <EditTextPreference
         android:key="bank_number"
         android:selectAllOnFocus="true"
         android:singleLine="true"

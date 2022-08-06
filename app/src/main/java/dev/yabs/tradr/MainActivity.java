@@ -2,6 +2,7 @@ package dev.yabs.tradr;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,9 +12,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -24,7 +27,6 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = getClass().getSimpleName();
-
     // initialize variables
     EditText etInput;
     Button btGenerate;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate called");
 
+
         // assign variables
         etInput = findViewById(R.id.et_input);
         btGenerate = findViewById(R.id.bt_generate);
@@ -45,12 +48,25 @@ public class MainActivity extends AppCompatActivity {
 
         btGenerate.setOnClickListener(v -> {
             // get input value from edit text
-            String sText = etInput.getText().toString().trim();
+            String sText = etInput
+                    .getText()
+                    .toString()
+                    .trim();
+            if (sText.length() == 0) {
+                Toast.makeText(MainActivity.this, "Enter a price", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // initialize multi format writer
             MultiFormatWriter writer = new MultiFormatWriter();
             try {
+                // build the EPC QR-Code
+                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+                String nameAccountOwner = prefs.getString("name_account_owner", "");
+                String accountNumber = prefs.getString("bank_number", "");
+                String transferDescription = prefs.getString("transfer_description", "");
+                String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sText + "\n\n\n" + transferDescription;
                 // initialize bit matrix
-                BitMatrix matrix = writer.encode(sText, BarcodeFormat.QR_CODE, 350, 350);
+                BitMatrix matrix = writer.encode(epc, BarcodeFormat.QR_CODE, 350, 350);
                 // initialize barcode encoder
                 BarcodeEncoder encoder = new BarcodeEncoder();
                 // initialize bitmap

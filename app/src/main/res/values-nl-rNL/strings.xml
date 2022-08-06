@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="enter_price">Voer prijs in</string>
     <string name="generate">Genereer</string>
     <string name="payment_qr_code">Betaling QR-Code</string>
     <string name="account_owner">Naam van ontvanger</string>
     <string name="account_number">Rekeningnummer (IBAN)</string>
     <string name="transfer_description">Overdrachtomschrijving</string>
     <string name="preferences">Instellingen</string>
+    <string name="price">Prijs</string>
 </resources>

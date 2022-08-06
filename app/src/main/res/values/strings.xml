@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name" translatable="false">Tradr</string>
-    <string name="enter_price">Enter price</string>
+    <string name="enter_price" translatable="false">0.01 = 1 cent</string>
     <string name="generate">Generate</string>
     <string name="payment_qr_code">Payment QR-Code</string>
     <string name="preferences">Preferences</string>
     <string name="account_owner">Name of recipient</string>
-    <string name="bank_bic_code" translatable="false">Bank Identifier Code (BIC)</string>
     <string name="account_number">Account number (IBAN)</string>
     <string name="transfer_description">Transfer description</string>
+    <string name="price">Price</string>
 </resources>
