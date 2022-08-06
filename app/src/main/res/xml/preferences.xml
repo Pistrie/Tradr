@@ -5,20 +5,20 @@
         android:key="name_account_owner"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="Naam van rekening eigenaar" />
+        android:title="@string/account_owner" />
     <EditTextPreference
         android:key="bic_code"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="BIC code van bank" />
+        android:title="@string/bank_bic_code" />
     <EditTextPreference
         android:key="bank_number"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="Rekeningnummer" />
+        android:title="@string/account_number" />
     <EditTextPreference
         android:key="transfer_description"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:title="Overdrachtomschrijving" />
+        android:title="@string/transfer_description" />
 </PreferenceScreen>

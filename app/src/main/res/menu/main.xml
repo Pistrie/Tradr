@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_preferences"
         android:orderInCategory="1"
-        app:showAsAction="collapseActionView"
-        android:title="Preferences"/>
+        android:title="@string/preferences"
+        app:showAsAction="collapseActionView" />
 
 </menu>
