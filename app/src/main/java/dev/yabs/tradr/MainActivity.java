@@ -1,6 +1,7 @@
 package dev.yabs.tradr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +11,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onOptionsItemSelected item clicked -> " + clickedItem);
 
         if (clickedItem == R.id.action_preferences) {
-//            startActivity(new Intent(this, PreferencesActivity.class));
-            Toast.makeText(MainActivity.this, "You clicked the preferences item", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, PreferencesActivity.class));
 
             return true;
         }

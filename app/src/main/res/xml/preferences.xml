@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:defaultValue="false"
-        android:key="switch_preference_1"
-        android:title="Switch preference" />
+    <EditTextPreference
+        android:key="name_account_owner"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Naam van rekening eigenaar" />
+    <EditTextPreference
+        android:key="bic_code"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="BIC code van bank" />
+    <EditTextPreference
+        android:key="bank_number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Rekeningnummer" />
+    <EditTextPreference
+        android:key="transfer_description"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Overdrachtomschrijving" />
 </PreferenceScreen>
