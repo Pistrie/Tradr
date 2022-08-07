@@ -5,6 +5,7 @@
         android:key="name_account_owner"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:summary="@string/name_account_owner_summary"
         android:title="@string/account_owner" />
     <EditTextPreference
         android:key="bank_number"
@@ -15,5 +16,6 @@
         android:key="transfer_description"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:summary="@string/transfer_description_summary"
         android:title="@string/transfer_description" />
 </PreferenceScreen>
