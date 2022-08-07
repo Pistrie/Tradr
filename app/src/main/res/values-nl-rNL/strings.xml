@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="generate">Genereer</string>
-    <string name="payment_qr_code">Betaling QR-Code</string>
+    <string name="payment_qr_code">Betaling QR code</string>
     <string name="account_owner">Naam van ontvanger</string>
-    <string name="account_number">Rekeningnummer (IBAN)</string>
-    <string name="transfer_description">Overdrachtomschrijving</string>
-    <string name="preferences">Instellingen</string>
+    <string name="account_number">Nederlands rekeningnummer (IBAN)</string>
+    <string name="transfer_description">Overdrachtomschrijving (optioneel)</string>
+    <string name="preferences">Voorkeuren</string>
     <string name="price">Prijs</string>
+    <string name="welcome_to_tradr">Welkom bij Tradr!</string>
+    <string name="first_launch_one">Deze app zal een QR code genereren die jouw klanten kunnen gebruiken om te betalen.</string>
+    <string name="first_launch_two">Helaas is deze QR code slechts een standaard, banken moeten er zelf voor kiezen om deze standaard te implementeren in hun apps. De geteste banken hebben een logo onder de QR code staan.</string>
+    <string name="first_launch_three">Het is nodig om je naam en IBAN van je bankrekening in te vullen in de voorkeuren van de app. Deze informatie wordt gebruikt om een geldige QR code te genereren.</string>
+    <string name="first_launch_four">Wanneer het hoofdscherm zichtbaar is klik je op de drie stippen rechtsboven in het scherm. Klik dan op de \'voorkeuren\' knop.</string>
+    <string name="first_launch_five">Hier zie je drie velden die voorzien dienen te worden van de gegevens van je bankrekening.</string>
+    <string name="first_launch_button">Ik snap het</string>
+    <string name="first_launch_six">Ga vervolgens terug naar het hoofdscherm, voer een prijs in, en laat de QR code aan je klant zien. De klant scant dan de code met de app van zijn bank. Als de bank voldoet aan de standaard wordt er een scherm geopend waardoor de klant kan betalen.</string>
+    <string name="name_account_owner_summary">Voer de naam van de eigenaar van het rekeningnummer in</string>
+    <string name="transfer_description_summary">Bijvoorbeeld de naam van jouw bedrijf</string>
+    <string name="enter_a_price">Voer een prijs in</string>
+    <string name="first_launch_setup">Voorbereiding:</string>
+    <string name="invalid_iban">De opgegeven IBAN is niet geldig</string>
+    <string name="required_info_missing">Niet alle vereiste informatie is opgegeven</string>
 </resources>

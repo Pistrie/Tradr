@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate called");
 
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // check if application has been started before
+        boolean firstTime = prefs.getBoolean("FirstTimeInstall", true);
+        if (firstTime) {
+            editor.putBoolean("FirstTimeInstall", false);
+            editor.apply();
+            startActivity(new Intent(this, FirstTimeActivity.class));
+        }
 
         // assign variables
         etInput = findViewById(R.id.et_input);
@@ -53,30 +63,36 @@ public class MainActivity extends AppCompatActivity {
                     .toString()
                     .trim();
             if (sText.length() == 0) {
-                Toast.makeText(MainActivity.this, "Enter a price", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.enter_a_price, Toast.LENGTH_SHORT).show();
                 return;
             }
             // initialize multi format writer
             MultiFormatWriter writer = new MultiFormatWriter();
             try {
                 // build the EPC QR-Code
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                String nameAccountOwner = prefs.getString("name_account_owner", "");
-                String accountNumber = prefs.getString("bank_number", "");
-                String transferDescription = prefs.getString("transfer_description", "");
-                String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sText + "\n\n\n" + transferDescription;
-                // initialize bit matrix
-                BitMatrix matrix = writer.encode(epc, BarcodeFormat.QR_CODE, 350, 350);
-                // initialize barcode encoder
-                BarcodeEncoder encoder = new BarcodeEncoder();
-                // initialize bitmap
-                Bitmap bitmap = encoder.createBitmap(matrix);
-                // set bitmap on image view
-                ivOutput.setImageBitmap(bitmap);
-                // initialize input manager
-                InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                // hide soft keyboard
-                manager.hideSoftInputFromWindow(etInput.getApplicationWindowToken(), 0);
+                String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
+                String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
+                String transferDescription = prefs.getString("transfer_description", "").trim();
+                if (nameAccountOwner.equals("") || accountNumber.equals("")) {
+                    Toast.makeText(this, R.string.required_info_missing, Toast.LENGTH_LONG).show();
+                } else {
+                    String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sText;
+                    if (!transferDescription.equals("")) {
+                        epc += "\n\n\n" + transferDescription;
+                    }
+                    // initialize bit matrix
+                    BitMatrix matrix = writer.encode(epc, BarcodeFormat.QR_CODE, 350, 350);
+                    // initialize barcode encoder
+                    BarcodeEncoder encoder = new BarcodeEncoder();
+                    // initialize bitmap
+                    Bitmap bitmap = encoder.createBitmap(matrix);
+                    // set bitmap on image view
+                    ivOutput.setImageBitmap(bitmap);
+                    // initialize input manager
+                    InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    // hide soft keyboard
+                    manager.hideSoftInputFromWindow(etInput.getApplicationWindowToken(), 0);
+                }
             } catch (WriterException e) {
                 e.printStackTrace();
             }
