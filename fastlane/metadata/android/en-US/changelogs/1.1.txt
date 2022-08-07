@@ -1,1 +1,0 @@
-It is now possible to generate an EPC069-12 QR Code using the information supplied by the user.
