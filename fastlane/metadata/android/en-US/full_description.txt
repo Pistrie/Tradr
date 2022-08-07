@@ -1,0 +1,1 @@
+This app will generate an EPC069-12 QR code in order to simplify the payment process for stores without a card machine.
