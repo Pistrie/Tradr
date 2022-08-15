@@ -1,0 +1,2 @@
+- De gegenereerde QR code wordt nu op een apart scherm getoond.
+- De kleuren van de app zijn veranderd.

@@ -21,7 +21,6 @@ package dev.yabs.tradr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -36,11 +35,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.journeyapps.barcodescanner.BarcodeEncoder;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,50 +72,53 @@ public class MainActivity extends AppCompatActivity {
 
         btGenerate.setOnClickListener(v -> {
             // get input value from edit text
-            String sText = etInput
+            String sPrice = etInput
                     .getText()
                     .toString()
                     .trim();
-            if (sText.length() == 0) {
+            // quick checks to see if the string is correct
+            if (sPrice.length() == 0) {
                 Toast.makeText(MainActivity.this, R.string.enter_a_price, Toast.LENGTH_SHORT).show();
                 return;
             }
-            // initialize multi format writer
-            MultiFormatWriter writer = new MultiFormatWriter();
-            try {
-                // build the EPC QR-Code
-                String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
-                String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
-                String transferDescription = prefs.getString("transfer_description", "").trim();
-                if (nameAccountOwner.equals("") || accountNumber.equals("")) {
-                    Toast.makeText(this, R.string.required_info_missing, Toast.LENGTH_LONG).show();
-                } else {
-                    String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sText;
-                    if (!transferDescription.equals("")) {
-                        epc += "\n\n\n" + transferDescription;
-                    }
-                    // initialize bit matrix
-                    BitMatrix matrix = writer.encode(epc, BarcodeFormat.QR_CODE, 350, 350);
-                    // initialize barcode encoder
-                    BarcodeEncoder encoder = new BarcodeEncoder();
-                    // initialize bitmap
-                    Bitmap bitmap = encoder.createBitmap(matrix);
-                    // set bitmap on image view
-                    ivOutput.setImageBitmap(bitmap);
-                    // initialize input manager
-                    InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    // hide soft keyboard
-                    manager.hideSoftInputFromWindow(etInput.getApplicationWindowToken(), 0);
+            if (sPrice.equals(".")) {
+                Toast.makeText(MainActivity.this, R.string.enter_a_price, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // format the string so that it looks like money
+            DecimalFormat df = new DecimalFormat("0.00");
+            df.setRoundingMode(RoundingMode.DOWN); // simply cut off excess numbers for EPC string
+            sPrice = df.format(Double.parseDouble(sPrice));
+            // build the EPC string
+            String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
+            String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
+            String transferDescription = prefs.getString("transfer_description", "").trim();
+            if (nameAccountOwner.equals("") || accountNumber.equals("")) {
+                Toast.makeText(this, R.string.required_info_missing, Toast.LENGTH_LONG).show();
+            } else {
+                String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sPrice;
+                if (!transferDescription.equals("")) {
+                    epc += "\n\n\n" + transferDescription;
                 }
-            } catch (WriterException e) {
-                e.printStackTrace();
+                // initialize input manager
+                InputMethodManager manager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                // hide soft keyboard
+                manager.hideSoftInputFromWindow(etInput.getApplicationWindowToken(), 0);
+
+                // start new activity
+                Intent qrCodeIntent = new Intent(this, QRCodeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("epc", epc);
+                bundle.putString("price", sPrice);
+                qrCodeIntent.putExtras(bundle);
+                startActivity(qrCodeIntent);
             }
         });
     }
 
     // create the menu
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }

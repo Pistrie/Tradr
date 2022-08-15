@@ -1,0 +1,1 @@
+Deze app genereerd een EPC069-12 QR code die het betaalproces voor kleine bedrijven zonder pinautomaat versimpeld.

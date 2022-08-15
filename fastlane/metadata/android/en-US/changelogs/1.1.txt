@@ -1,0 +1,2 @@
+- The generated QR code will now be shown on a separate screen.
+- The colorscheme has been changed.

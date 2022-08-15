@@ -15,42 +15,31 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with Tradr.  If not, see <http://www.gnu.org/licenses/>.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:background="?attr/fullscreenBackgroundColor"
+    android:theme="@style/ThemeOverlay.Tradr.FullscreenContainer"
+    tools:context=".QRCodeActivity">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/price" />
-
-    <EditText
-        android:id="@+id/et_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/enter_price"
-        android:importantForAutofill="no"
-        android:inputType="numberDecimal"
-        android:padding="12dp" />
-
-    <Button
-        android:id="@+id/bt_generate"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/generate" />
+        android:layout_above="@+id/qr_output"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        android:textSize="30sp" />
 
     <ImageView
-        android:id="@+id/iv_output"
+        android:id="@+id/qr_output"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/payment_qr_code"
         android:scaleType="fitCenter" />
 
-</LinearLayout>
+</RelativeLayout>
