@@ -40,4 +40,9 @@
     <string name="first_launch_setup">Setting up:</string>
     <string name="invalid_iban">The supplied IBAN is not valid.</string>
     <string name="required_info_missing">Not all required information has been supplied in the preferences area</string>
+    <string name="ing_logo" translatable="false">ING logo</string>
+    <string name="knab_logo" translatable="false">Knab logo</string>
+    <string name="asn_logo" translatable="false">ASN logo</string>
+    <string name="bunq_logo" translatable="false">Bunq logo</string>
+    <string name="sns_logo" translatable="false">SNS logo</string>
 </resources>
