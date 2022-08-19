@@ -16,7 +16,8 @@
   ~ along with Tradr.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,17 +30,109 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/qr_output"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="75dp"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/qr_output"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/qr_output"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:adjustViewBounds="true"
         android:contentDescription="@string/payment_qr_code"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+    <GridLayout
+        android:id="@+id/bank_logos_grid1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="100"
+        android:columnCount="3"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qr_output"
+        app:layout_constraintVertical_bias="0.1">
+
+        <ImageView
+            android:id="@+id/ing_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/ing_logo"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_ing" />
+
+        <ImageView
+            android:id="@+id/asn_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/asn_logo"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_asn" />
+
+        <ImageView
+            android:id="@+id/knab_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/knab_logo"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_knab" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/bank_logos_grid2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_rowWeight="100"
+        android:columnCount="2"
+        android:rowCount="1"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bank_logos_grid1"
+        app:layout_constraintVertical_bias="0.1">
+
+        <ImageView
+            android:id="@+id/bunq_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/bunq_logo"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_bunq" />
+
+        <ImageView
+            android:id="@+id/sns_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/sns_logo"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/sns" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
