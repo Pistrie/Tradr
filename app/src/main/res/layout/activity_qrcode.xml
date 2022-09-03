@@ -23,14 +23,14 @@
     android:layout_height="match_parent"
     android:background="?attr/fullscreenBackgroundColor"
     android:theme="@style/ThemeOverlay.Tradr.FullscreenContainer"
-    tools:context=".QRCodeActivity">
+    tools:context=".activities.QRCodeActivity">
 
     <TextView
         android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/qr_output"
-        android:textSize="30sp"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/qr_output"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

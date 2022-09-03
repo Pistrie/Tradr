@@ -45,4 +45,9 @@
     <string name="asn_logo" translatable="false">ASN logo</string>
     <string name="bunq_logo" translatable="false">Bunq logo</string>
     <string name="sns_logo" translatable="false">SNS logo</string>
+    <string name="info" translatable="false">Info</string>
+    <string name="source_code">Source code available on:\nhttps://gitlab.com/Pistrie/tradr</string>
+    <string name="warranty_notice">This program comes with absolutely no warranty.\nSee the GNU General Public License, version 3 or later for details.</string>
+    <string name="app_description">Banking QR code generator</string>
+    <string name="created_by_sylvester_roos">By Sylvester Roos</string>
 </resources>

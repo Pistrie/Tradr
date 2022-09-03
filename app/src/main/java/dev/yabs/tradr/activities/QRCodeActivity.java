@@ -16,7 +16,7 @@
  * along with Tradr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package dev.yabs.tradr;
+package dev.yabs.tradr.activities;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -32,6 +32,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import dev.yabs.tradr.R;
 import dev.yabs.tradr.databinding.ActivityQrcodeBinding;
 
 public class QRCodeActivity extends AppCompatActivity {
@@ -76,7 +77,7 @@ public class QRCodeActivity extends AppCompatActivity {
             Bitmap bitmap = encoder.createBitmap(matrix);
             // set bitmap on image view
             qrOutput.setImageBitmap(bitmap);
-            tvPrice.setText("€ " + price);
+            tvPrice.setText(price);
         } catch (WriterException e) {
             e.printStackTrace();
         }

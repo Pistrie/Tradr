@@ -16,25 +16,10 @@
  * along with Tradr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package dev.yabs.tradr;
+package dev.yabs.tradr.utils;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-public class FirstTimeActivity extends AppCompatActivity {
-
-    Button btSetUp;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_time);
-
-        btSetUp = findViewById(R.id.bt_set_up);
-
-        btSetUp.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
+public class CheckIban {
+    public static boolean checkIban(String iban) {
+        return iban.matches("^NL[0-9]{2} ?[A-Z0-9]{4} ?[0-9]{4} ?[0-9]{4} ?[0-9]{2}$");
     }
 }

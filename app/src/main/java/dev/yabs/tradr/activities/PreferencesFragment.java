@@ -16,12 +16,14 @@
  * along with Tradr.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package dev.yabs.tradr;
+package dev.yabs.tradr.activities;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragmentCompat;
+
+import dev.yabs.tradr.R;
 
 public class PreferencesFragment extends PreferenceFragmentCompat {
 

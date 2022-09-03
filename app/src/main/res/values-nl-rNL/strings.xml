@@ -38,4 +38,8 @@
     <string name="first_launch_setup">Voorbereiding:</string>
     <string name="invalid_iban">De opgegeven IBAN is niet geldig</string>
     <string name="required_info_missing">Niet alle vereiste informatie is opgegeven</string>
+    <string name="source_code">Broncode beschikbaar op:\nhttps://gitlab.com/Pistrie/tradr</string>
+    <string name="warranty_notice">Dit programma komt zonder garantie.\nZie de GNU General Public License, versie 3 of later voor details.</string>
+    <string name="app_description">Bankieren QR code generator</string>
+    <string name="created_by_sylvester_roos">Door Sylvester Roos</string>
 </resources>

@@ -38,6 +38,12 @@ import androidx.preference.PreferenceManager;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+import dev.yabs.tradr.activities.FirstTimeActivity;
+import dev.yabs.tradr.activities.InfoActivity;
+import dev.yabs.tradr.activities.PreferencesActivity;
+import dev.yabs.tradr.activities.QRCodeActivity;
+import dev.yabs.tradr.utils.CheckIban;
+
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = getClass().getSimpleName();
@@ -68,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         // assign variables
         etInput = findViewById(R.id.et_input);
         btGenerate = findViewById(R.id.bt_generate);
-        ivOutput = findViewById(R.id.iv_output);
 
         btGenerate.setOnClickListener(v -> {
             // get input value from edit text
@@ -93,7 +98,9 @@ public class MainActivity extends AppCompatActivity {
             String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
             String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
             String transferDescription = prefs.getString("transfer_description", "").trim();
-            if (nameAccountOwner.equals("") || accountNumber.equals("")) {
+            if (!CheckIban.checkIban(prefs.getString("bank_number", ""))) {
+                Toast.makeText(this, R.string.invalid_iban, Toast.LENGTH_LONG).show();
+            } else if (nameAccountOwner.equals("") || accountNumber.equals("")) {
                 Toast.makeText(this, R.string.required_info_missing, Toast.LENGTH_LONG).show();
             } else {
                 String epc = "BCD\n002\n1\nSCT\n\n" + nameAccountOwner + "\n" + accountNumber + "\nEUR" + sPrice;
@@ -132,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (clickedItem == R.id.action_preferences) {
             startActivity(new Intent(this, PreferencesActivity.class));
+
+            return true;
+        } else if (clickedItem == R.id.action_info) {
+            startActivity(new Intent(this, InfoActivity.class));
 
             return true;
         }

@@ -1,0 +1,2 @@
+- The app now has an info screen
+- Increased font sizes in several places
