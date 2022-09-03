@@ -1,0 +1,2 @@
+- De app heeft nu een info scherm
+- De tekstgrootte is op verschillende plekken aangepast
