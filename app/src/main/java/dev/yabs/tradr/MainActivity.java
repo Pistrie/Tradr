@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             // format the string so that it looks like money
             DecimalFormat df = new DecimalFormat("0.00");
             df.setRoundingMode(RoundingMode.DOWN); // simply cut off excess numbers for EPC string
-            sPrice = df.format(Double.parseDouble(sPrice));
+            sPrice = df.format(Double.parseDouble(sPrice)).replace(",", ".");
             // build the EPC string
             String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
             String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
