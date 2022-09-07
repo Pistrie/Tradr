@@ -28,7 +28,6 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     // initialize variables
     EditText etInput;
     Button btGenerate;
-    ImageView ivOutput;
 
     // creating the activity
     @Override
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             sPrice = df.format(Double.parseDouble(sPrice)).replace(",", ".");
             // build the EPC string
             String nameAccountOwner = prefs.getString("name_account_owner", "").trim();
-            String accountNumber = prefs.getString("bank_number", "").trim().toUpperCase();
+            String accountNumber = prefs.getString("bank_number", "").trim().replace(" ", "").toUpperCase();
             String transferDescription = prefs.getString("transfer_description", "").trim();
             if (!CheckIban.checkIban(prefs.getString("bank_number", ""))) {
                 Toast.makeText(this, R.string.invalid_iban, Toast.LENGTH_LONG).show();

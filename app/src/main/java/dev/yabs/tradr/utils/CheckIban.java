@@ -20,6 +20,6 @@ package dev.yabs.tradr.utils;
 
 public class CheckIban {
     public static boolean checkIban(String iban) {
-        return iban.matches("^NL[0-9]{2} ?[A-Z0-9]{4} ?[0-9]{4} ?[0-9]{4} ?[0-9]{2}$");
+        return iban.matches("^[nN][lL][0-9]{2} ?([A-Z0-9]|[a-z0-9]){4} ?[0-9]{4} ?[0-9]{4} ?[0-9]{2}$");
     }
 }
