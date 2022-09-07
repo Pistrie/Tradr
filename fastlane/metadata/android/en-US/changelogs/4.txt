@@ -1,0 +1,2 @@
+- Improved IBAN checking
+- The introduction screen is now scrollable for the small devices

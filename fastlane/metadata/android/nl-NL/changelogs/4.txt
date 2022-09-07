@@ -1,0 +1,4 @@
+- Improved IBAN checking
+- IBAN controle is verbeterd
+- The introduction screen is now scrollable for the small devices
+- Het introscherm kan nu gescrolld worden voor de kleine schermen
